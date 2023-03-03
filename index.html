@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+
+  <body>
+    <section class="contact-form">
+      <h1>Currículo</h1>
+
+      <form>
+        <div class="div-input">
+          <input id="h" name="genero" type="radio" value="H" />
+          <label class="inline" for="h">Homem</label>
+
+          <input id="m" name="genero" type="radio" value="M" />
+          <label class="inline" for="m">Mulher</label>
+        </div>
+
+        <div class="div-input">
+          <label for="name">Nome Completo*</label>
+          <input id="name" name="nome" type="text" />
+        </div>
+
+        <div class="div-endereco">
+          <div class="endereco endereco">
+            <label for="name">Endereço*</label>
+            <input id="endereco" name="endereco" type="text" />
+          </div>
+          <div class="endereco numero">
+            <label for="name">Número*</label>
+            <input id="numero" name="numero" type="text" />
+          </div>
+          <div class="endereco bairro">
+            <label for="name">Bairro*</label>
+            <input id="bairro" name="bairro" type="text" />
+          </div>
+        </div>
+
+        <div class="div-input">
+          <label for="dataNasc">Data de Nascimento*</label>
+          <input id="dataNasc" name="dataNasc" type="date" />
+        </div>
+
+        <div class="div-input">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" />
+        </div>
+
+        <fieldset>
+          <legend>CNH</legend>
+
+          <div class="div-input">
+            <h5>CNH*</h5>
+            <input id="cnh-a" name="cnh" type="radio" value="A" />
+            <label class="inline" for="cnh-a">A</label>
+
+            <input id="cnh-b" name="cnh" type="radio" value="B" />
+            <label class="inline" for="cnh-b">B</label>
+
+            <input id="cnh-c" name="cnh" type="radio" value="C" />
+            <label class="inline" for="cnh-c">C</label>
+
+            <input id="cnh-d" name="cnh" type="radio" value="D" />
+            <label class="inline" for="cnh-d">D</label>
+
+            <input id="cnh-e" name="cnh" type="radio" value="E" />
+            <label class="inline" for="cnh-e">E</label>
+
+            <input id="cnh-ab" name="cnh" type="radio" value="AB" />
+            <label class="inline" for="cnh-ab">AB</label>
+
+            <input id="cnh-ac" name="cnh" type="radio" value="AC" />
+            <label class="inline" for="cnh-ac">AC</label>
+
+            <input id="cnh-ad" name="cnh" type="radio" value="AD" />
+            <label class="inline" for="cnh-ad">AD</label>
+
+            <input id="cnh-ae" name="cnh" type="radio" value="AE" />
+            <label class="inline" for="cnh-ae">AE</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Telefones</legend>
+
+          <div class="div-input">
+            <div class="div-multiple-input telefones">
+              <input name="telefone" type="tel" />
+            </div>
+            <input
+              type="button"
+              class="botaoAcao adicionarTelefone"
+              value="+"
+            />
+            <input type="button" class="botaoAcao removerTelefone" value="-" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Estado Civil</legend>
+
+          <div class="div-input">
+            <input
+              id="solteiro"
+              name="estado-civil"
+              type="radio"
+              value="Solteiro"
+            />
+            <label class="inline" for="solteiro">Solteiro</label>
+
+            <input
+              id="casado"
+              name="estado-civil"
+              type="radio"
+              value="Casado"
+            />
+            <label class="inline" for="casado">Casado</label>
+
+            <input
+              id="uniao-estavel"
+              name="estado-civil"
+              type="radio"
+              value="União Estável"
+            />
+            <label class="inline" for="uniao-estavel">União Estável</label>
+
+            <input
+              id="divorciado"
+              name="estado-civil"
+              type="radio"
+              value="Divorciado"
+            />
+            <label class="inline" for="divorciado">Divorciado</label>
+
+            <input id="viuva" name="estado-civil" type="radio" value="Viúva" />
+            <label class="inline" for="viuva">Viúvo</label>
+          </div>
+        </fieldset>
+
+        <div class="div-input">
+          <label for="formEscolar">Formação Escolar*</label>
+          <input id="formEscolar" name="formEscolar" type="text" />
+        </div>
+
+        <fieldset>
+          <legend>Cursos</legend>
+
+          <div class="div-input cursos">
+            <fieldset>
+              <legend>Curso</legend>
+
+              <label for="curso-local">Local</label>
+              <input id="curso-local" name="local" type="text" />
+
+              <label for="curso-curso">Curso</label>
+              <input id="curso-curso" name="curso" type="text" />
+
+              <label for="curso-periodo">Período</label>
+              <input id="curso-periodo" name="periodo" type="text" />
+            </fieldset>
+          </div>
+          <input type="button" class="botaoAcao adicionarCurso" value="+" />
+          <input type="button" class="botaoAcao removerCurso" value="-" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Trabalhos</legend>
+
+          <div class="div-input trabalhos">
+            <fieldset>
+              <legend>Trabalho</legend>
+
+              <label for="curso-local">Local</label>
+              <input id="curso-local" name="local" type="text" />
+
+              <label for="curso-curso">Cargo</label>
+              <input id="curso-curso" name="curso" type="text" />
+
+              <label for="curso-periodo">Período</label>
+              <input id="curso-periodo" name="periodo" type="text" />
+            </fieldset>
+          </div>
+          <input type="button" class="botaoAcao adicionarTrabalho" value="+" />
+          <input type="button" class="botaoAcao removerTrabalho" value="-" />
+        </fieldset>
+
+        <button type="submit">Criar</button>
+      </form>
+    </section>
+
+    <div class="results">
+      <h2>Form Data</h2>
+      <pre></pre>
+    </div>
+  </body>
+</html>
