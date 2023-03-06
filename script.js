@@ -6,7 +6,32 @@ function handleFormSubmit(event) {
   const formJSON = Object.fromEntries(data.entries());
 
   // for multi-selects, we need special handling
-  formJSON.snacks = data.getAll('snacks');
+  let cursosInput = document.querySelectorAll('.cursos');
+  let cursoss = [];
+  cursosInput.forEach((c) => {
+    let a = c.querySelectorAll('input');
+    cursoss.push({
+      local: a[0].value,
+      curso: a[1].value,
+      periodo: a[2].value,
+    });
+  });
+  formJSON.cursos = cursoss;
+
+  formJSON.telefone = data.getAll('telefone');
+
+  let trabalhosInput = document.querySelectorAll('.trabalhosField');
+  let trabalhoss = [];
+  trabalhosInput.forEach((c) => {
+    let a = c.querySelectorAll('input');
+    trabalhoss.push({
+      local: a[0].value,
+      cargo: a[1].value,
+      periodo: a[2].value,
+    });
+  });
+
+  formJSON.trabalhos = trabalhoss;
 
   const results = document.querySelector('.results pre');
   results.innerText = JSON.stringify(formJSON, null, 2);
@@ -34,7 +59,7 @@ const bRemoveTrabalho = document.querySelector('input.removerTrabalho');
 bRemoveTrabalho.addEventListener('click', removeTrabalho);
 
 const divTelefones = document.querySelector('div.telefones');
-const divCursos = document.querySelector('div.cursos');
+const divCursos = document.querySelector('div.cursosField');
 const divTrabalhos = document.querySelector('div.trabalhos');
 
 let cursoIndex = 2;
@@ -53,6 +78,7 @@ function removeTelefone(event) {
 
 function addCurso(event) {
   let fset = document.createElement('fieldset');
+  fset.classList.add('cursos');
   fset.style.marginTop = '15px';
   let legend = document.createElement('legend');
   legend.innerHTML = `Curso ${cursoIndex}`;
