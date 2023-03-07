@@ -60,7 +60,7 @@ bRemoveTrabalho.addEventListener('click', removeTrabalho);
 
 const divTelefones = document.querySelector('div.telefones');
 const divCursos = document.querySelector('div.cursosField');
-const divTrabalhos = document.querySelector('div.trabalhos');
+const divTrabalhos = document.querySelector('div.trabalhosField');
 
 let cursoIndex = 2;
 let trabalhoIndex = 2;
