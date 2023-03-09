@@ -13,49 +13,119 @@
       <h1>Currículo</h1>
 
       <form>
-        <div class="div-input">
-          <input
-            id="h"
-            name="genero"
-            type="radio"
-            value="H"
-            checked
-          />
-          <label class="inline" for="h">Homem</label>
+        <fieldset>
+          <legend>Dados Pessoais</legend>
 
-          <input id="m" name="genero" type="radio" value="M" />
-          <label class="inline" for="m">Mulher</label>
-        </div>
+          <div class="div-input">
+            <input id="h" name="genero" type="radio" value="H" checked />
+            <label class="inline" for="h">Homem</label>
 
-        <div class="div-input">
-          <label for="name">Nome Completo*</label>
-          <input id="name" name="nome" type="text" required/>
-        </div>
-
-        <div class="div-endereco">
-          <div class="endereco endereco">
-            <label for="name">Endereço*</label>
-            <input id="endereco" name="endereco" type="text" />
+            <input id="m" name="genero" type="radio" value="M" />
+            <label class="inline" for="m">Mulher</label>
           </div>
-          <div class="endereco numero">
-            <label for="name">Número*</label>
-            <input id="numero" name="numero" type="text" />
-          </div>
-          <div class="endereco bairro">
-            <label for="name">Bairro*</label>
-            <input id="bairro" name="bairro" type="text" />
-          </div>
-        </div>
 
-        <div class="div-input">
-          <label for="dataNasc">Data de Nascimento*</label>
-          <input id="dataNasc" name="dataNasc" type="text" required/>
-        </div>
+          <div class="div-input">
+            <label for="name">Nome Completo*</label>
+            <input id="name" name="nome" type="text" required />
+          </div>
 
-        <div class="div-input">
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" />
-        </div>
+          <div class="div-endereco">
+            <div class="endereco endereco">
+              <label for="name">Endereço*</label>
+              <input id="endereco" name="endereco" type="text" />
+            </div>
+            <div class="endereco numero">
+              <label for="name">Número*</label>
+              <input id="numero" name="numero" type="text" />
+            </div>
+            <div class="endereco bairro">
+              <label for="name">Bairro*</label>
+              <input id="bairro" name="bairro" type="text" />
+            </div>
+          </div>
+
+          <div class="div-input">
+            <label for="dataNasc">Data de Nascimento*</label>
+            <input id="dataNasc" name="dataNasc" type="text" required />
+          </div>
+
+          <div class="div-input">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" />
+          </div>
+
+          <div class="div-input">
+            <label for="formEscolar">Formação Escolar*</label>
+            <input
+              id="formEscolar"
+              name="formacaoEscolar"
+              type="text"
+              required
+            />
+          </div>
+
+          <fieldset>
+            <legend>Telefones</legend>
+
+            <div class="div-input">
+              <div class="div-multiple-input telefones">
+                <input name="telefone" type="tel" />
+              </div>
+              <input
+                type="button"
+                class="botaoAcao adicionarTelefone"
+                value="+"
+              />
+              <input
+                type="button"
+                class="botaoAcao removerTelefone"
+                value="-"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Estado Civil</legend>
+
+            <div class="div-input">
+              <input
+                id="solteiro"
+                name="estadoCivil"
+                type="radio"
+                value="Solteiro"
+                checked
+              />
+              <label class="inline" for="solteiro">Solteiro</label>
+
+              <input
+                id="casado"
+                name="estadoCivil"
+                type="radio"
+                value="Casado"
+              />
+              <label class="inline" for="casado">Casado</label>
+
+              <input
+                id="uniao-estavel"
+                name="estadoCivil"
+                type="radio"
+                value="União Estável"
+              />
+              <label class="inline" for="uniao-estavel">União Estável</label>
+
+              <input
+                id="divorciado"
+                name="estadoCivil"
+                type="radio"
+                value="Divorciado"
+              />
+              <label class="inline" for="divorciado">Divorciado</label>
+
+              <input id="viuva" name="estadoCivil" type="radio" value="Viúva" />
+              <label class="inline" for="viuva">Viúvo</label>
+            </div>
+          </fieldset>          
+        </fieldset>
 
         <fieldset>
           <legend>CNH</legend>
@@ -63,7 +133,7 @@
           <div class="div-input">
             <h5>CNH*</h5>
 
-            <input id="cnh-a" name="cnh" type="radio" value="" checked/>
+            <input id="cnh-a" name="cnh" type="radio" value="" checked />
             <label class="inline" for="cnh-a">Sem CNH</label>
 
             <input id="cnh-a" name="cnh" type="radio" value="A" />
@@ -94,64 +164,6 @@
             <label class="inline" for="cnh-ae">AE</label>
           </div>
         </fieldset>
-
-        <fieldset>
-          <legend>Telefones</legend>
-
-          <div class="div-input">
-            <div class="div-multiple-input telefones">
-              <input name="telefone" type="tel" />
-            </div>
-            <input
-              type="button"
-              class="botaoAcao adicionarTelefone"
-              value="+"
-            />
-            <input type="button" class="botaoAcao removerTelefone" value="-" />
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Estado Civil</legend>
-
-          <div class="div-input">
-            <input
-              id="solteiro"
-              name="estadoCivil"
-              type="radio"
-              value="Solteiro"
-              checked
-            />
-            <label class="inline" for="solteiro">Solteiro</label>
-
-            <input id="casado" name="estadoCivil" type="radio" value="Casado" />
-            <label class="inline" for="casado">Casado</label>
-
-            <input
-              id="uniao-estavel"
-              name="estadoCivil"
-              type="radio"
-              value="União Estável"
-            />
-            <label class="inline" for="uniao-estavel">União Estável</label>
-
-            <input
-              id="divorciado"
-              name="estadoCivil"
-              type="radio"
-              value="Divorciado"
-            />
-            <label class="inline" for="divorciado">Divorciado</label>
-
-            <input id="viuva" name="estadoCivil" type="radio" value="Viúva" />
-            <label class="inline" for="viuva">Viúvo</label>
-          </div>
-        </fieldset>
-
-        <div class="div-input">
-          <label for="formEscolar">Formação Escolar*</label>
-          <input id="formEscolar" name="formacaoEscolar" type="text" required/>
-        </div>
 
         <fieldset>
           <legend>Cursos</legend>
