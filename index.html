@@ -14,7 +14,13 @@
 
       <form>
         <div class="div-input">
-          <input id="h" name="genero" type="radio" value="H" />
+          <input
+            id="h"
+            name="genero"
+            type="radio"
+            value="H"
+            checked
+          />
           <label class="inline" for="h">Homem</label>
 
           <input id="m" name="genero" type="radio" value="M" />
@@ -23,7 +29,7 @@
 
         <div class="div-input">
           <label for="name">Nome Completo*</label>
-          <input id="name" name="nome" type="text" />
+          <input id="name" name="nome" type="text" required/>
         </div>
 
         <div class="div-endereco">
@@ -43,7 +49,7 @@
 
         <div class="div-input">
           <label for="dataNasc">Data de Nascimento*</label>
-          <input id="dataNasc" name="dataNasc" type="text" />
+          <input id="dataNasc" name="dataNasc" type="text" required/>
         </div>
 
         <div class="div-input">
@@ -56,6 +62,10 @@
 
           <div class="div-input">
             <h5>CNH*</h5>
+
+            <input id="cnh-a" name="cnh" type="radio" value="" checked/>
+            <label class="inline" for="cnh-a">Sem CNH</label>
+
             <input id="cnh-a" name="cnh" type="radio" value="A" />
             <label class="inline" for="cnh-a">A</label>
 
@@ -110,6 +120,7 @@
               name="estadoCivil"
               type="radio"
               value="Solteiro"
+              checked
             />
             <label class="inline" for="solteiro">Solteiro</label>
 
@@ -139,7 +150,7 @@
 
         <div class="div-input">
           <label for="formEscolar">Formação Escolar*</label>
-          <input id="formEscolar" name="formacaoEscolar" type="text" />
+          <input id="formEscolar" name="formacaoEscolar" type="text" required/>
         </div>
 
         <fieldset>
@@ -150,13 +161,13 @@
               <legend>Curso</legend>
 
               <label for="curso-local">Local</label>
-              <input id="curso-local" name="local" type="text" />
+              <input id="curso-local" type="text" />
 
               <label for="curso-curso">Curso</label>
-              <input id="curso-curso" name="curso" type="text" />
+              <input id="curso-curso" type="text" />
 
               <label for="curso-periodo">Período</label>
-              <input id="curso-periodo" name="periodo" type="text" />
+              <input id="curso-periodo" type="text" />
             </fieldset>
           </div>
           <input type="button" class="botaoAcao adicionarCurso" value="+" />
@@ -170,14 +181,14 @@
             <fieldset class="trabalhos">
               <legend>Trabalho</legend>
 
-              <label for="curso-local">Local</label>
-              <input id="curso-local" name="local" type="text" />
+              <label for="trabalho-local">Local</label>
+              <input id="trabalho-local" type="text" />
 
-              <label for="curso-curso">Cargo</label>
-              <input id="curso-curso" name="curso" type="text" />
+              <label for="trabalho-cargo">Cargo</label>
+              <input id="trabalho-cargo" type="text" />
 
-              <label for="curso-periodo">Período</label>
-              <input id="curso-periodo" name="periodo" type="text" />
+              <label for="trabalho-periodo">Período</label>
+              <input id="trabalho-periodo" type="text" />
             </fieldset>
           </div>
           <input type="button" class="botaoAcao adicionarTrabalho" value="+" />

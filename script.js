@@ -20,7 +20,7 @@ function handleFormSubmit(event) {
 
   formJSON.telefone = data.getAll('telefone');
 
-  let trabalhosInput = document.querySelectorAll('.trabalhosField');
+  let trabalhosInput = document.querySelectorAll('.trabalhos');
   let trabalhoss = [];
   trabalhosInput.forEach((c) => {
     let a = c.querySelectorAll('input');
@@ -35,6 +35,15 @@ function handleFormSubmit(event) {
 
   const results = document.querySelector('.results pre');
   results.innerText = JSON.stringify(formJSON, null, 2);
+
+  var BOM = '\uFEFF';
+  const a = document.createElement('a');
+  const file = new Blob([BOM + results.innerText], {
+    type: 'text/plain;charset=utf-8',
+  });
+  a.href = URL.createObjectURL(file);
+  a.download = 'cv.json';
+  a.click();
 }
 
 const form = document.querySelector('.contact-form');
@@ -62,21 +71,23 @@ const divTelefones = document.querySelector('div.telefones');
 const divCursos = document.querySelector('div.cursosField');
 const divTrabalhos = document.querySelector('div.trabalhosField');
 
-let cursoIndex = 2;
-let trabalhoIndex = 2;
+let cursoIndex = 1;
+let trabalhoIndex = 1;
 
-function addTelefone(event) {
+function addTelefone() {
   let telefone = document.createElement('input');
   telefone.type = 'tel';
   telefone.name = 'telefone';
   divTelefones.append(telefone);
 }
 
-function removeTelefone(event) {
+function removeTelefone() {
   divTelefones.removeChild(divTelefones.lastElementChild);
 }
 
-function addCurso(event) {
+function addCurso() {
+  ++cursoIndex;
+
   let fset = document.createElement('fieldset');
   fset.classList.add('cursos');
   fset.style.marginTop = '15px';
@@ -107,16 +118,20 @@ function addCurso(event) {
   fset.appendChild(labelPeriodo).appendChild(inputPeriodo);
 
   divCursos.append(fset);
-  cursoIndex++;
 }
 
-function removeCurso(event) {
-  cursoIndex--;
-  divCursos.removeChild(divCursos.lastElementChild);
+function removeCurso() {
+  if (divCursos.childElementCount > 1) {
+    divCursos.removeChild(divCursos.lastElementChild);
+    cursoIndex--;
+  }
 }
 
-function addTrabalho(event) {
+function addTrabalho() {
+  ++trabalhoIndex;
+
   let fset = document.createElement('fieldset');
+  fset.classList.add('trabalhos');
   fset.style.marginTop = '15px';
   let legend = document.createElement('legend');
   legend.innerHTML = `Trabalho ${trabalhoIndex}`;
@@ -124,19 +139,25 @@ function addTrabalho(event) {
 
   let labelLocal = document.createElement('label');
   let inputLocal = document.createElement('input');
-  inputLocal.id = `local${cursoIndex}`;
+
+  inputLocal.id = `local${trabalhoIndex}`;
+
   labelLocal.htmlFor = inputLocal.id;
   labelLocal.innerText = 'Local';
 
   let labelCargo = document.createElement('label');
   let inputCargo = document.createElement('input');
+
   inputCargo.id = `cargo${trabalhoIndex}`;
+
   labelCargo.htmlFor = inputCargo.id;
   labelCargo.innerText = 'Cargo';
 
   let labelPeriodo = document.createElement('label');
   let inputPeriodo = document.createElement('input');
-  inputPeriodo.id = `periodo${cursoIndex}`;
+
+  inputPeriodo.id = `periodo${trabalhoIndex}`;
+
   labelPeriodo.htmlFor = inputPeriodo.id;
   labelPeriodo.innerText = 'Período';
 
@@ -145,10 +166,11 @@ function addTrabalho(event) {
   fset.appendChild(labelPeriodo).appendChild(inputPeriodo);
 
   divTrabalhos.append(fset);
-  trabalhoIndex++;
 }
 
-function removeTrabalho(event) {
-  trabalhoIndex--;
-  divTrabalhos.removeChild(divTrabalhos.lastElementChild);
+function removeTrabalho() {
+  if (divTrabalhos.childElementCount > 1) {
+    trabalhoIndex--;
+    divTrabalhos.removeChild(divTrabalhos.lastElementChild);
+  }
 }
