@@ -68,7 +68,33 @@ const bRemoveTrabalho = document.querySelector('input.removerTrabalho');
 bRemoveTrabalho.addEventListener('click', removeTrabalho);
 
 const radioGenero = document.forms[0].genero;
-radioGenero.forEach((r) => r.addEventListener('change', oi));
+radioGenero.forEach((r) => r.addEventListener('change', mudaGenero));
+
+const telefoneField = document.forms[0].telefone;
+telefoneField.addEventListener('input', formataTelefone);
+
+const dataDeNascimentoField = document.forms[0].dataNasc;
+dataDeNascimentoField.addEventListener('input', formataDataDeNascimento);
+
+function formataDataDeNascimento(event) {
+  let dataDeNascimento = event.target;
+
+  let dataDeNascimentoFormatado = dataDeNascimento.value.replace(
+    /(\d{2})(\d{2})(\d{4})/,
+    '$1/$2/$3'
+  );
+  dataDeNascimento.value = dataDeNascimentoFormatado;
+}
+
+function formataTelefone(event) {
+  let telefone = event.target;
+
+  let telefoneFormatado = telefone.value.replace(
+    /(\d{2})(\d{5})(\d{4})/,
+    '($1) $2-$3'
+  );
+  telefone.value = telefoneFormatado;
+}
 
 const divTelefones = document.querySelector('div.telefones');
 const divCursos = document.querySelector('div.cursosField');
@@ -79,8 +105,10 @@ let trabalhoIndex = 1;
 
 function addTelefone() {
   let telefone = document.createElement('input');
-  telefone.type = 'tel';
+  telefone.type = 'text';
+  telefone.maxLength = 15;
   telefone.name = 'telefone';
+  telefone.addEventListener('input', formataTelefone);
   divTelefones.append(telefone);
 }
 
@@ -178,7 +206,7 @@ function removeTrabalho() {
   }
 }
 
-function oi() {
+function mudaGenero() {
   let isHomem = document.forms[0].genero[0].checked;
   let genero = isHomem ? 'o' : 'a';
 
