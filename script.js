@@ -67,6 +67,9 @@ bAdicionarTrabalho.addEventListener('click', addTrabalho);
 const bRemoveTrabalho = document.querySelector('input.removerTrabalho');
 bRemoveTrabalho.addEventListener('click', removeTrabalho);
 
+const radioGenero = document.forms[0].genero;
+radioGenero.forEach((r) => r.addEventListener('change', oi));
+
 const divTelefones = document.querySelector('div.telefones');
 const divCursos = document.querySelector('div.cursosField');
 const divTrabalhos = document.querySelector('div.trabalhosField');
@@ -173,4 +176,21 @@ function removeTrabalho() {
     trabalhoIndex--;
     divTrabalhos.removeChild(divTrabalhos.lastElementChild);
   }
+}
+
+function oi() {
+  let isHomem = document.forms[0].genero[0].checked;
+  let genero = isHomem ? 'o' : 'a';
+
+  document.getElementById('solteirx').value = 'Solteir' + genero;
+  document.querySelector('[for="solteirx"]').innerHTML = 'Solteir' + genero;
+
+  document.getElementById('casadx').value = 'Casad' + genero;
+  document.querySelector('[for="casadx"]').innerHTML = 'Casad' + genero;
+
+  document.getElementById('viuvx').value = 'Viúv' + genero;
+  document.querySelector('[for="viuvx"]').innerHTML = 'Viúv' + genero;
+
+  document.getElementById('divorciadx').value = 'Divorciad' + genero;
+  document.querySelector('[for="divorciadx"]').innerHTML = 'Divorciad' + genero;
 }
