@@ -29,6 +29,17 @@
             <input id="name" name="nome" type="text" required />
           </div>
 
+          <div class="div-input">
+            <label for="dataNasc">Data de Nascimento*</label>
+            <input
+              id="dataNasc"
+              name="dataNasc"
+              type="text"
+              required
+              maxlength="10"
+            />
+          </div>
+
           <div class="div-endereco">
             <div class="endereco endereco">
               <label for="name">Endereço*</label>
@@ -44,32 +55,12 @@
             </div>
           </div>
 
-          <div class="div-input">
-            <label for="dataNasc">Data de Nascimento*</label>
-            <input id="dataNasc" name="dataNasc" type="text" required maxlength="10"/>
-          </div>
-
-          <div class="div-input">
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" />
-          </div>
-
-          <div class="div-input">
-            <label for="formEscolar">Formação Escolar*</label>
-            <input
-              id="formEscolar"
-              name="formacaoEscolar"
-              type="text"
-              required
-            />
-          </div>
-
           <fieldset>
             <legend>Telefones</legend>
 
             <div class="div-input">
               <div class="div-multiple-input telefones">
-                <input name="telefone" type="tex" maxlength="15"/>
+                <input name="telefone" type="tex" maxlength="15" />
               </div>
               <input
                 type="button"
@@ -125,43 +116,58 @@
               <label class="inline" for="viuvx">Viúvo</label>
             </div>
           </fieldset>
-        </fieldset>
-
-        <fieldset>
-          <legend>CNH</legend>
 
           <div class="div-input">
-            <h5>CNH*</h5>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" />
+          </div>
 
-            <input id="cnh-a" name="cnh" type="radio" value="" checked />
-            <label class="inline" for="cnh-a">Sem CNH</label>
+          <fieldset>
+            <legend>CNH</legend>
 
-            <input id="cnh-a" name="cnh" type="radio" value="A" />
-            <label class="inline" for="cnh-a">A</label>
+            <div class="div-input">
+              <h5>CNH*</h5>
 
-            <input id="cnh-b" name="cnh" type="radio" value="B" />
-            <label class="inline" for="cnh-b">B</label>
+              <input id="cnh-a" name="cnh" type="radio" value="" checked />
+              <label class="inline" for="cnh-a">Sem CNH</label>
 
-            <input id="cnh-c" name="cnh" type="radio" value="C" />
-            <label class="inline" for="cnh-c">C</label>
+              <input id="cnh-a" name="cnh" type="radio" value="A" />
+              <label class="inline" for="cnh-a">A</label>
 
-            <input id="cnh-d" name="cnh" type="radio" value="D" />
-            <label class="inline" for="cnh-d">D</label>
+              <input id="cnh-b" name="cnh" type="radio" value="B" />
+              <label class="inline" for="cnh-b">B</label>
 
-            <input id="cnh-e" name="cnh" type="radio" value="E" />
-            <label class="inline" for="cnh-e">E</label>
+              <input id="cnh-c" name="cnh" type="radio" value="C" />
+              <label class="inline" for="cnh-c">C</label>
 
-            <input id="cnh-ab" name="cnh" type="radio" value="AB" />
-            <label class="inline" for="cnh-ab">AB</label>
+              <input id="cnh-d" name="cnh" type="radio" value="D" />
+              <label class="inline" for="cnh-d">D</label>
 
-            <input id="cnh-ac" name="cnh" type="radio" value="AC" />
-            <label class="inline" for="cnh-ac">AC</label>
+              <input id="cnh-e" name="cnh" type="radio" value="E" />
+              <label class="inline" for="cnh-e">E</label>
 
-            <input id="cnh-ad" name="cnh" type="radio" value="AD" />
-            <label class="inline" for="cnh-ad">AD</label>
+              <input id="cnh-ab" name="cnh" type="radio" value="AB" />
+              <label class="inline" for="cnh-ab">AB</label>
 
-            <input id="cnh-ae" name="cnh" type="radio" value="AE" />
-            <label class="inline" for="cnh-ae">AE</label>
+              <input id="cnh-ac" name="cnh" type="radio" value="AC" />
+              <label class="inline" for="cnh-ac">AC</label>
+
+              <input id="cnh-ad" name="cnh" type="radio" value="AD" />
+              <label class="inline" for="cnh-ad">AD</label>
+
+              <input id="cnh-ae" name="cnh" type="radio" value="AE" />
+              <label class="inline" for="cnh-ae">AE</label>
+            </div>
+          </fieldset>
+
+          <div class="div-input">
+            <label for="formEscolar">Formação Escolar*</label>
+            <input
+              id="formEscolar"
+              name="formacaoEscolar"
+              type="text"
+              required
+            />
           </div>
         </fieldset>
 
