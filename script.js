@@ -1,3 +1,47 @@
+let cursoIndex = 1;
+let trabalhoIndex = 1;
+
+//---------
+//SELETORES E EVENTOS
+
+const divTelefones = document.querySelector('div.telefones');
+const divCursos = document.querySelector('div.cursosField');
+const divTrabalhos = document.querySelector('div.trabalhosField');
+
+const form = document.querySelector('.contact-form');
+form.addEventListener('submit', handleFormSubmit);
+
+const bAdicionarTelefone = document.querySelector('input.adicionarTelefone');
+bAdicionarTelefone.addEventListener('click', addTelefone);
+
+const bRemoveTelefone = document.querySelector('input.removerTelefone');
+bRemoveTelefone.addEventListener('click', removeTelefone);
+
+const bAdicionarCurso = document.querySelector('input.adicionarCurso');
+bAdicionarCurso.addEventListener('click', addCurso);
+
+const bRemoveCurso = document.querySelector('input.removerCurso');
+bRemoveCurso.addEventListener('click', removeCurso);
+
+const bAdicionarTrabalho = document.querySelector('input.adicionarTrabalho');
+bAdicionarTrabalho.addEventListener('click', addTrabalho);
+
+const bRemoveTrabalho = document.querySelector('input.removerTrabalho');
+bRemoveTrabalho.addEventListener('click', removeTrabalho);
+
+const radioGenero = document.forms[0].genero;
+radioGenero.forEach((r) => r.addEventListener('change', mudaGenero));
+
+const telefoneField = document.forms[0].telefone;
+telefoneField.addEventListener('input', formataTelefone);
+
+const dataDeNascimentoField = document.forms[0].dataNasc;
+dataDeNascimentoField.addEventListener('input', formataDataDeNascimento);
+
+//---------
+
+//HANDLERS
+
 function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -46,36 +90,6 @@ function handleFormSubmit(event) {
   a.click();
 }
 
-const form = document.querySelector('.contact-form');
-form.addEventListener('submit', handleFormSubmit);
-
-const bAdicionarTelefone = document.querySelector('input.adicionarTelefone');
-bAdicionarTelefone.addEventListener('click', addTelefone);
-
-const bRemoveTelefone = document.querySelector('input.removerTelefone');
-bRemoveTelefone.addEventListener('click', removeTelefone);
-
-const bAdicionarCurso = document.querySelector('input.adicionarCurso');
-bAdicionarCurso.addEventListener('click', addCurso);
-
-const bRemoveCurso = document.querySelector('input.removerCurso');
-bRemoveCurso.addEventListener('click', removeCurso);
-
-const bAdicionarTrabalho = document.querySelector('input.adicionarTrabalho');
-bAdicionarTrabalho.addEventListener('click', addTrabalho);
-
-const bRemoveTrabalho = document.querySelector('input.removerTrabalho');
-bRemoveTrabalho.addEventListener('click', removeTrabalho);
-
-const radioGenero = document.forms[0].genero;
-radioGenero.forEach((r) => r.addEventListener('change', mudaGenero));
-
-const telefoneField = document.forms[0].telefone;
-telefoneField.addEventListener('input', formataTelefone);
-
-const dataDeNascimentoField = document.forms[0].dataNasc;
-dataDeNascimentoField.addEventListener('input', formataDataDeNascimento);
-
 function formataDataDeNascimento(event) {
   let dataDeNascimento = event.target;
 
@@ -95,13 +109,6 @@ function formataTelefone(event) {
   );
   telefone.value = telefoneFormatado;
 }
-
-const divTelefones = document.querySelector('div.telefones');
-const divCursos = document.querySelector('div.cursosField');
-const divTrabalhos = document.querySelector('div.trabalhosField');
-
-let cursoIndex = 1;
-let trabalhoIndex = 1;
 
 function addTelefone() {
   let telefone = document.createElement('input');
