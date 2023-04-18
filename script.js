@@ -112,7 +112,9 @@ function addTelefone() {
 }
 
 function removeTelefone() {
-  divTelefones.removeChild(divTelefones.lastElementChild);
+  if (divTelefones.childElementCount > 1) {
+    divTelefones.removeChild(divTelefones.lastElementChild);
+  }
 }
 
 function addCurso() {

@@ -13,7 +13,7 @@
       <h1>Currículo</h1>
 
       <form>
-        <fieldset>
+        <fieldset id="dadosPessoais">
           <legend>Dados Pessoais</legend>
 
           <div class="div-input">
@@ -54,31 +54,32 @@
               <input id="bairro" name="bairro" type="text" />
             </div>
           </div>
+          <div class="div-input">
+            <fieldset>
+              <legend>Telefones</legend>
 
-          <fieldset>
-            <legend>Telefones</legend>
-
-            <div class="div-input">
-              <div class="div-multiple-input telefones">
-                <input name="telefone" type="tex" maxlength="15" />
+              <div class="div-input">
+                <div class="div-multiple-input telefones">
+                  <input name="telefone" type="tex" maxlength="15" />
+                </div>
+                <input
+                  type="button"
+                  class="botaoAcao adicionarTelefone"
+                  value="+"
+                />
+                <input
+                  type="button"
+                  class="botaoAcao removerTelefone"
+                  value="-"
+                />
               </div>
-              <input
-                type="button"
-                class="botaoAcao adicionarTelefone"
-                value="+"
-              />
-              <input
-                type="button"
-                class="botaoAcao removerTelefone"
-                value="-"
-              />
-            </div>
-          </fieldset>
+            </fieldset>
+          </div>
 
-          <fieldset>
-            <legend>Estado Civil</legend>
+          <div class="div-input">
+            <fieldset>
+              <legend>Estado Civil</legend>
 
-            <div class="div-input">
               <input
                 id="solteirx"
                 name="estadoCivil"
@@ -114,19 +115,16 @@
 
               <input id="viuvx" name="estadoCivil" type="radio" value="Viúvo" />
               <label class="inline" for="viuvx">Viúvo</label>
-            </div>
-          </fieldset>
+            </fieldset>
+          </div>
 
           <div class="div-input">
             <label for="email">E-mail</label>
             <input id="email" name="email" type="email" />
           </div>
-
-          <fieldset>
-            <legend>CNH</legend>
-
-            <div class="div-input">
-              <h5>CNH*</h5>
+          <div class="div-input">
+            <fieldset>
+              <legend>CNH*</legend>
 
               <input id="cnh-a" name="cnh" type="radio" value="" checked />
               <label class="inline" for="cnh-a">Sem CNH</label>
@@ -157,8 +155,8 @@
 
               <input id="cnh-ae" name="cnh" type="radio" value="AE" />
               <label class="inline" for="cnh-ae">AE</label>
-            </div>
-          </fieldset>
+            </fieldset>
+          </div>
 
           <div class="div-input">
             <label for="formEscolar">Formação Escolar*</label>
@@ -171,10 +169,10 @@
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset id="cursos">
           <legend>Cursos</legend>
 
-          <div class="div-input cursosField">
+          <div class="cursosField div-input">
             <fieldset class="cursos">
               <legend>Curso</legend>
 
@@ -188,14 +186,16 @@
               <input id="curso-periodo" type="text" />
             </fieldset>
           </div>
-          <input type="button" class="botaoAcao adicionarCurso" value="+" />
-          <input type="button" class="botaoAcao removerCurso" value="-" />
+          <div class="div-input">
+            <input type="button" class="botaoAcao adicionarCurso" value="+" />
+            <input type="button" class="botaoAcao removerCurso" value="-" />
+          </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset id="trabalhos">
           <legend>Trabalhos</legend>
 
-          <div class="div-input trabalhosField">
+          <div class="trabalhosField div-input">
             <fieldset class="trabalhos">
               <legend>Trabalho</legend>
 
@@ -209,8 +209,14 @@
               <input id="trabalho-periodo" type="text" />
             </fieldset>
           </div>
-          <input type="button" class="botaoAcao adicionarTrabalho" value="+" />
-          <input type="button" class="botaoAcao removerTrabalho" value="-" />
+          <div class="div-input">
+            <input
+              type="button"
+              class="botaoAcao adicionarTrabalho"
+              value="+"
+            />
+            <input type="button" class="botaoAcao removerTrabalho" value="-" />
+          </div>
         </fieldset>
 
         <button type="submit">Criar</button>
