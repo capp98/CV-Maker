@@ -81,11 +81,6 @@ p {
   padding-top: 0px;
 }
 
-fieldset:not(#dadosPessoais, #cursos, #trabalhos) {
-  /* margin-left: 1rem;
-  margin-right: 1rem; */
-}
-
 .contact-form label {
   display: block;
   color: var(--color-gray-dark);
