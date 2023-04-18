@@ -75,6 +75,12 @@ p {
   clear: both;
 }
 
+#cursos .div-input:last-of-type,
+#trabalhos .div-input:last-of-type {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
 fieldset:not(#dadosPessoais, #cursos, #trabalhos) {
   /* margin-left: 1rem;
   margin-right: 1rem; */
