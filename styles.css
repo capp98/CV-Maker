@@ -179,9 +179,11 @@ input.botaoAcao:nth-child(even) {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+  gap: 1rem;
 }
 
-div.endereco.bairro, div.endereco.endereco {
+div.endereco.bairro,
+div.endereco.endereco {
   width: 100%;
 }
 
