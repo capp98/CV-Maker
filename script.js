@@ -46,17 +46,16 @@ dataDeNascimentoField.addEventListener('input', formataDataDeNascimento);
 
 //HANDLERS
 
-async function handleEndereco(event) {
+function handleEndereco(event) {
   if (event.which == 9 || event.keyCode == 9) {
     let bairro = document.getElementById('bairro');
 
-    let res = await fetch(
-      `https://viacep.com.br/ws/SP/Guaruja/${endereco.value}/json/`
-    );
-    let json = await res.json();
-
-    endereco.value = json[0].logradouro;
-    bairro.value = json[0].bairro;
+    fetch(`https://viacep.com.br/ws/SP/Guaruja/${endereco.value}/json/`)
+      .then((res) => res.json())
+      .then((json) => {
+        endereco.value = json[0].logradouro;
+        bairro.value = json[0].bairro;
+      });
   }
 }
 
@@ -65,11 +64,12 @@ async function handleCEP(event) {
   if (cepCampo.value.length == 8) {
     let bairro = document.getElementById('bairro');
 
-    let res = await fetch(`https://viacep.com.br/ws/${cepCampo.value}/json/`);
-    let json = await res.json();
-
-    endereco.value = json.logradouro;
-    bairro.value = json.bairro;
+    fetch(`https://viacep.com.br/ws/${cepCampo.value}/json/`)
+      .then((res) => res.json())
+      .then((json) => {
+        endereco.value = json.logradouro;
+        bairro.value = json.bairro;
+      });
   }
 }
 
