@@ -6,14 +6,60 @@
   --color-darkest: #2a2f2c;
 }
 
+.list {
+  position: absolute;
+  width: 200px;
+  /* top: 50px; */
+  max-height: 250px;
+  background: var(--color-lightest);
+  /* color: #fff; */
+  overflow-y: auto;
+  /*overflow-x: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s linear;
+  */
+}
+
+.list li {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.list li:hover {
+  background: rgba(33, 33, 33, 0.3);
+}
+
+.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.selecting {
+  background: rgba(200, 200, 200, 0.3);
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(5px);
+  transition-duration: 0.15s;
+  transition: none;
+}
+
 *,
 ::before,
 ::after {
   margin: 0;
   box-sizing: border-box;
+  border-radius: 5px;
 }
 
-* + *:not(.endereco) {
+* + *:not(.endereco, .list) {
   margin-top: 1rem;
 }
 
@@ -26,7 +72,6 @@ body {
   line-height: 1.45;
 }
 
-/* Headings use a different font because they’re hipsters. */
 h1,
 h2 {
   color: var(--color-darkest);
@@ -38,7 +83,6 @@ h1 {
   font-size: 125%;
 }
 
-/* Set up general layout rules for outer containers. */
 .contact-form,
 .results {
   width: 90vw;
@@ -110,6 +154,10 @@ p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   transition: 150ms border-color linear;
+}
+
+input#cep {
+  width: 40%;
 }
 
 .contact-form input[type='checkbox'],
