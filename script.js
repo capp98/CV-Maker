@@ -9,6 +9,12 @@ const divTrabalhos = document.querySelector('div.trabalhosField');
 const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);
 
+const cep = document.getElementById('cep');
+cep.addEventListener('keyup', handleCEP);
+
+const endereco = document.getElementById('endereco');
+endereco.addEventListener('keydown', handleEndereco);
+
 const bAdicionarTelefone = document.querySelector('input.adicionarTelefone');
 bAdicionarTelefone.addEventListener('click', addTelefone);
 
@@ -39,6 +45,33 @@ dataDeNascimentoField.addEventListener('input', formataDataDeNascimento);
 //#endregion
 
 //HANDLERS
+
+async function handleEndereco(event) {
+  if (event.which == 9 || event.keyCode == 9) {
+    let bairro = document.getElementById('bairro');
+
+    let res = await fetch(
+      `https://viacep.com.br/ws/SP/Guaruja/${endereco.value}/json/`
+    );
+    let json = await res.json();
+
+    endereco.value = json[0].logradouro;
+    bairro.value = json[0].bairro;
+  }
+}
+
+async function handleCEP(event) {
+  let cepCampo = event.target;
+  if (cepCampo.value.length == 8) {
+    let bairro = document.getElementById('bairro');
+
+    let res = await fetch(`https://viacep.com.br/ws/${cepCampo.value}/json/`);
+    let json = await res.json();
+
+    endereco.value = json.logradouro;
+    bairro.value = json.bairro;
+  }
+}
 
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -81,25 +114,24 @@ function handleFormSubmit(event) {
 
 function formataDataDeNascimento(event) {
   let dataDeNascimento = event.target;
+  let data = dataDeNascimento.value.replace(/\D+/g, '');
 
-  let dataDeNascimentoFormatado = dataDeNascimento.value.replace(
-    /(\d{2})(\d{2})(\d{4})/,
-    '$1/$2/$3'
-  );
-  dataDeNascimento.value = dataDeNascimentoFormatado;
+  dataDeNascimento.value =
+    data.length == 8 ? data.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3') : data;
 }
 
 function formataTelefone(event) {
-  let telefone = event.target;
-  let telefoneFormatado;
-  if (telefone.value.length == 9) {
-    telefoneFormatado =
-      telefone.value[0] != '1'
-        ? telefone.value.replace(/(\d{5})(\d{4})/, '$1-$2')
-        : telefone.value.replace(/(\d{2})(\d{5})(\d{2})/, '($1) $2-$3');
-  } else telefoneFormatado = telefone.value;
+  let telefoneCampo = event.target;
+  let telefone = telefoneCampo.value.replace(/\D+/g, '');
 
-  telefone.value = telefoneFormatado;
+  telefone =
+    telefone.length < 9
+      ? telefone
+      : telefone.length == 9
+      ? telefone.replace(/(\d{5})(\d{4})/, '$1-$2')
+      : telefone.replace(/(\d{2})(\d{5})(\d{2})/, '($1) $2-$3');
+
+  telefoneCampo.value = telefone;
 }
 
 function addTelefone() {
@@ -727,3 +759,82 @@ function gen(dados) {
     console.log('Document created successfully');
   });
 }
+
+// WIP
+
+// var input = document.querySelector('#trabalho-cargo');
+//       var list = document.querySelector('.list');
+//       var selecting = -1;
+//       input.addEventListener('keyup', async function (e) {
+//         list.innerHTML = '';
+
+//         const res = await fetch('cargos.json');
+//         var typing = await res.json();
+
+//         // Filter data-list array
+//         typing = typing.filter(function (item) {
+//           return item.toLowerCase().search(e.target.value.toLowerCase()) != -1;
+//         });
+
+//         // If value empty hide list and arrow
+//         if (e.target.value === '' || typing.length === 0) {
+//           list.classList.add('hide');
+//           list.classList.remove('show');
+//         } else {
+//           list.classList.remove('hide');
+//           list.classList.add('show');
+//         }
+
+//         typing_arr = typing;
+
+//         // Show filtered data-list
+//         typing_arr.map(function (list_item) {
+//           var li = document.createElement('li');
+//           list.appendChild(li);
+//           li.innerHTML = list_item;
+
+//           // Close list when click on li and make clicked li input value
+//           li.addEventListener('click', function (e) {
+//             input.value = e.target.textContent;
+//             list.classList.add('hide');
+//           });
+
+//           // Close list when click enter and make selecting li input value
+//           if (e.which == 13 || e.keyCode == 13) {
+//             if (selecting > -1) {
+//               input.value = list_li[selecting].textContent;
+//               list.classList.add('hide');
+//             }
+//           }
+//         });
+
+//         // Down and up buttons
+//         if (e.which == 40 || e.keyCode == 40) {
+//           selecting++;
+
+//           list_li = list.querySelectorAll('li');
+//           if (selecting + 1 > list_li.length) {
+//             selecting = 0;
+//           }
+
+//           list_li[selecting].classList.add('selecting');
+
+//           // When input value change, make selecting -1
+//           input.addEventListener('input', function (e) {
+//             selecting = -1;
+//           });
+//         } else if (e.which == 38 || e.keyCode == 38) {
+//           selecting--;
+
+//           list_li = list.querySelectorAll('li');
+//           if (selecting < 0) {
+//             selecting = list_li.length - 1;
+//           }
+
+//           list_li[selecting].classList.add('selecting');
+//         }
+
+//         // Keep selecting class when press a button
+//         list_li = list.querySelectorAll('li');
+//         list_li[selecting].classList.add('selecting');
+//       });
