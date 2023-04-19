@@ -702,7 +702,7 @@ function gen(dados) {
           }),
 
           new paragrafo({
-            text: 'Dinâmico;',
+            text: `Dinâmic${genero};`,
             numbering: {
               reference: 'bolinha',
               level: 0,
