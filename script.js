@@ -365,7 +365,6 @@ function gen(dados) {
         }),
         new texto({
           text: dados.email,
-          bold: true,
         }),
       ],
       style: 'normal',
