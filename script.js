@@ -1,6 +1,10 @@
 let cursoIndex = 1;
 let trabalhoIndex = 1;
 
+const resetaCampo = (event) => {
+  event.target.value = event.target.value.replace(/\D+/g, '');
+};
+
 //#region SELETORES E EVENTOS
 const divTelefones = document.querySelector('div.telefones');
 const divCursos = document.querySelector('div.cursosField');
@@ -11,6 +15,8 @@ form.addEventListener('submit', handleFormSubmit);
 
 const cep = document.getElementById('cep');
 cep.addEventListener('keyup', handleCEP);
+cep.addEventListener('focus', resetaCampo);
+cep.addEventListener('focusout', formataCEP);
 
 const endereco = document.getElementById('endereco');
 endereco.addEventListener('keydown', handleEndereco);
@@ -37,10 +43,12 @@ const radioGenero = document.forms[0].genero;
 radioGenero.forEach((r) => r.addEventListener('change', mudaGenero));
 
 const telefoneField = document.forms[0].telefone;
-telefoneField.addEventListener('input', formataTelefone);
+telefoneField.addEventListener('focusout', formataTelefone);
+telefoneField.addEventListener('focus', resetaCampo);
 
 const dataDeNascimentoField = document.forms[0].dataNasc;
-dataDeNascimentoField.addEventListener('input', formataDataDeNascimento);
+dataDeNascimentoField.addEventListener('focusout', formataDataDeNascimento);
+dataDeNascimentoField.addEventListener('focus', resetaCampo);
 
 //#endregion
 
@@ -55,8 +63,13 @@ function handleEndereco(event) {
       .then((json) => {
         endereco.value = json[0].logradouro;
         bairro.value = json[0].bairro;
+        cep.value = json[0].cep;
       });
   }
+}
+
+function formataCEP({ target }) {
+  target.value = target.value.replace(/(\d{5})(\d{3})/, '$1-$2');
 }
 
 async function handleCEP(event) {
