@@ -13,6 +13,13 @@ const divTrabalhos = document.querySelector('div.trabalhosField');
 const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);
 
+document.getElementById('name').addEventListener('focusout', formataNome);
+document.getElementById('curso-local').addEventListener('focusout', formataNome);
+document.getElementById('curso-curso').addEventListener('focusout', formataNome);
+document.getElementById('trabalho-local').addEventListener('focusout', formataNome);
+document.getElementById('trabalho-cargo').addEventListener('focusout', formataNome);
+
+
 const cep = document.getElementById('cep');
 cep.addEventListener('keyup', handleCEP);
 cep.addEventListener('focus', resetaCampo);
@@ -125,6 +132,18 @@ function handleFormSubmit(event) {
 
 //#region MANIPULA CAMPOS
 
+function formataNome({ target }) {
+  let nome = target.value.split(' ');
+  let conjunto = [];
+
+  nome.forEach((n) => {
+    if (!n.match(/\bd[a,o,e][s]?\b/g))
+      conjunto.push(n.charAt(0).toUpperCase() + n.slice(1));
+    else conjunto.push(n);
+  });
+  target.value = conjunto.join(' ');
+}
+
 function formataDataDeNascimento(event) {
   let dataDeNascimento = event.target;
   let data = dataDeNascimento.value.replace(/\D+/g, '');
@@ -152,7 +171,8 @@ function addTelefone() {
   telefone.type = 'text';
   telefone.maxLength = 15;
   telefone.name = 'telefone';
-  telefone.addEventListener('input', formataTelefone);
+  telefone.addEventListener('focus', resetaCampo);
+  telefone.addEventListener('focusout', formataTelefone);
   divTelefones.append(telefone);
 }
 
@@ -175,11 +195,13 @@ function addCurso() {
   let labelLocal = document.createElement('label');
   let inputLocal = document.createElement('input');
   inputLocal.id = `local${cursoIndex}`;
+  inputLocal.addEventListener('focusout', formataNome);
   labelLocal.htmlFor = inputLocal.id;
   labelLocal.innerText = 'Local';
 
   let labelCurso = document.createElement('label');
   let inputCurso = document.createElement('input');
+  inputCurso.addEventListener('focusout', formataNome);
   inputCurso.id = `curso${cursoIndex}`;
   labelCurso.htmlFor = inputCurso.id;
   labelCurso.innerText = 'Curso';
@@ -216,6 +238,7 @@ function addTrabalho() {
 
   let labelLocal = document.createElement('label');
   let inputLocal = document.createElement('input');
+  inputLocal.addEventListener('focusout', formataNome);
 
   inputLocal.id = `local${trabalhoIndex}`;
 
@@ -224,6 +247,7 @@ function addTrabalho() {
 
   let labelCargo = document.createElement('label');
   let inputCargo = document.createElement('input');
+  inputCargo.addEventListener('focusout', formataNome);
 
   inputCargo.id = `cargo${trabalhoIndex}`;
 
