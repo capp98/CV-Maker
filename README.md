@@ -1,5 +1,5 @@
 Atualmente gerando currículo no formato Word
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/web-platform-kmtm7m)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/gera-curriculo)
 
-[Link para acessar](https://capp98.github.io/wip-geraJsonCurriculo/)
+[Link para acessar](https://capp98.github.io/CV-Maker/)

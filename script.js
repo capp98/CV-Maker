@@ -428,7 +428,7 @@ function gen(dados) {
     if (dados.cursos[0].curso) {
       paragraphArray.push(
         new paragrafo({
-          text: 'Cursos Extracurriculares:',
+          text: 'Cursos Extracurriculares',
           style: 'topico',
         })
       );
@@ -715,14 +715,14 @@ function gen(dados) {
           paragrafoCnh,
 
           new paragrafo({
-            text: 'Qualificações Profissionais:',
+            text: 'Qualificações Profissionais',
             style: 'topico',
           }),
 
           paragrafoQualiProf,
 
           new paragrafo({
-            text: 'Formação Escolar:',
+            text: 'Formação Escolar',
             style: 'topico',
           }),
 
