@@ -1,8 +1,8 @@
 let cursoIndex = 1;
 let trabalhoIndex = 1;
 
-const resetaCampo = (event) => {
-  event.target.value = event.target.value.replace(/\D+/g, '');
+const resetaCampo = ({ target }) => {
+  target.value = target.value.replace(/\D+/g, '');
 };
 
 //#region SELETORES E EVENTOS
@@ -14,11 +14,21 @@ const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);
 
 document.getElementById('name').addEventListener('focusout', formataNome);
-document.getElementById('curso-local').addEventListener('focusout', formataNome);
-document.getElementById('curso-curso').addEventListener('focusout', formataNome);
-document.getElementById('trabalho-local').addEventListener('focusout', formataNome);
-document.getElementById('trabalho-cargo').addEventListener('focusout', formataNome);
-
+document
+  .getElementById('curso-local')
+  .addEventListener('focusout', formataNome);
+document
+  .getElementById('curso-curso')
+  .addEventListener('focusout', formataNome);
+document
+  .getElementById('trabalho-local')
+  .addEventListener('focusout', formataNome);
+document
+  .getElementById('trabalho-cargo')
+  .addEventListener('focusout', formataNome);
+document
+  .getElementById('trabalho-periodo')
+  .addEventListener('focusout', formataPeriodo);
 
 const cep = document.getElementById('cep');
 cep.addEventListener('keyup', handleCEP);
@@ -54,7 +64,7 @@ telefoneField.addEventListener('focusout', formataTelefone);
 telefoneField.addEventListener('focus', resetaCampo);
 
 const dataDeNascimentoField = document.forms[0].dataNasc;
-dataDeNascimentoField.addEventListener('focusout', formataDataDeNascimento);
+dataDeNascimentoField.addEventListener('focusout', formataData);
 dataDeNascimentoField.addEventListener('focus', resetaCampo);
 
 //#endregion
@@ -144,7 +154,22 @@ function formataNome({ target }) {
   target.value = conjunto.join(' ');
 }
 
-function formataDataDeNascimento(event) {
+function formataPeriodo({ target }) {
+  let periodo = target.value;
+
+  let reg = RegExp(/^([0-9]{2})([0-9]{2})([0-9]{4})$/g);
+
+  let a = periodo
+    .split(' ')
+    .map((i) =>
+      reg.test(i) ? i.replace(/([0-9]{2})([0-9]{2})([0-9]{4})/, '$1/$2/$3') : i
+    )
+    .join(' ');
+
+  target.value = a;
+}
+
+function formataData(event) {
   let dataDeNascimento = event.target;
   let data = dataDeNascimento.value.replace(/\D+/g, '');
 
@@ -158,7 +183,7 @@ function formataTelefone(event) {
 
   telefone =
     telefone.length < 9
-      ? telefone
+      ? telefone.replace(/(\d{4})(\d{4})/, '$1-$2')
       : telefone.length == 9
       ? telefone.replace(/(\d{5})(\d{4})/, '$1-$2')
       : telefone.replace(/(\d{2})(\d{5})(\d{2})/, '($1) $2-$3');
@@ -258,6 +283,7 @@ function addTrabalho() {
   let inputPeriodo = document.createElement('input');
 
   inputPeriodo.id = `periodo${trabalhoIndex}`;
+  inputPeriodo.addEventListener('focusout', formataPeriodo);
 
   labelPeriodo.htmlFor = inputPeriodo.id;
   labelPeriodo.innerText = 'Período';
