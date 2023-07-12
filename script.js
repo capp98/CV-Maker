@@ -147,7 +147,7 @@ function formataNome({ target }) {
   let conjunto = [];
 
   nome.forEach((n) => {
-    if (!n.match(/\bd[a,o,e][s]?\b/g))
+    if (!n.match(/\bd[a,o,e][s]?|^[e]$\b/g))
       conjunto.push(n.charAt(0).toUpperCase() + n.slice(1));
     else conjunto.push(n);
   });
