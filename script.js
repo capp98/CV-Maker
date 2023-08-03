@@ -456,7 +456,11 @@ function gen(dados) {
 
   const paragrafoFormacaoEscolar = new paragrafo({
     text: dados.formacaoEscolar,
-    style: 'normal',
+    style: 'topicoLista',
+    numbering: {
+      reference: 'bolinha',
+      level: 0,
+    },
   });
 
   const paragrafoCursos = () => {
