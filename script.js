@@ -13,13 +13,23 @@ const divTrabalhos = document.querySelector('div.trabalhosField');
 const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);
 
+document
+  .getElementById('formEscolar')
+  .addEventListener('focusout', formataNome);
+
 document.getElementById('name').addEventListener('focusout', formataNome);
 document
   .getElementById('curso-local')
   .addEventListener('focusout', formataNome);
+
 document
   .getElementById('curso-curso')
   .addEventListener('focusout', formataNome);
+
+document
+  .getElementById('curso-periodo')
+  .addEventListener('focusout', formataPeriodo);
+
 document
   .getElementById('trabalho-local')
   .addEventListener('focusout', formataNome);
@@ -90,11 +100,11 @@ function formataCEP({ target }) {
 }
 
 async function handleCEP(event) {
-  let cepCampo = event.target;
-  if (cepCampo.value.length == 8) {
+  let cepValor = event.target.value.replace(/\D+/g, '');
+  if (cepValor.length == 8) {
     let bairro = document.getElementById('bairro');
 
-    fetch(`https://viacep.com.br/ws/${cepCampo.value}/json/`)
+    fetch(`https://viacep.com.br/ws/${cepValor}/json/`)
       .then((res) => res.json())
       .then((json) => {
         endereco.value = json.logradouro;
@@ -233,6 +243,7 @@ function addCurso() {
 
   let labelPeriodo = document.createElement('label');
   let inputPeriodo = document.createElement('input');
+  inputPeriodo.addEventListener('focusout', formataPeriodo);
   inputPeriodo.id = `periodo${cursoIndex}`;
   labelPeriodo.htmlFor = inputPeriodo.id;
   labelPeriodo.innerText = 'Período';
